@@ -152,3 +152,7 @@ body {
 #result, #rng {
   visibility: hidden;
 }
+
+#result {
+  padding-bottom: 2em;
+}
