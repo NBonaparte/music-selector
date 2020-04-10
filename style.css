@@ -16,6 +16,24 @@ a {
   color: #9C8D6C;
 }
 
+@media (max-width: 80.0rem) {
+  hr {
+    width: 100%;
+  }
+}
+
+@media (min-width: 80.0rem) {
+  hr {
+    width: 48.0rem;
+  }
+}
+
+hr {
+  background-color: #272423;
+  border: none;
+  height: 2px;
+}
+
 label {
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
