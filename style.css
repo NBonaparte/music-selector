@@ -1,7 +1,16 @@
-main {
-  max-width: 80rem;
-  margin: 0 auto;
+@media (max-width: 80.0rem) {
+  main {
+    margin: 0 1em;
+  }
 }
+
+@media (min-width: 80.0rem) {
+  main {
+    max-width: 120rem;
+    margin: 0 auto;
+  }
+}
+
 
 a {
   color: #9C8D6C;
@@ -12,9 +21,23 @@ label {
   margin-bottom: 1.5rem;
 }
 
+@media (max-width: 80.0rem) {
+  .noUi-pips {
+    font-size: 1.2rem;
+  }
+  .noUi-value-horizontal {
+    transform: translate(-50%, 100%);
+  }
+}
+
+@media (min-width: 80.0rem) {
+  .noUi-pips {
+    font-size: 1.5rem;
+  }
+}
+
 .noUi-pips {
   color: unset;
-  font-size: 1.8rem;
 }
 
 .noUi-marker {
@@ -40,7 +63,6 @@ label {
   width: 28px;
   height: 28px;
   right: -14px;
-  /*top: calc(-6px - (18px - 4px)/2 + (28px - 16px)/2);*/
   top: calc(-6px - (18px - 6px)/2);
 }
 
@@ -75,28 +97,28 @@ input[type='submit']:hover {
 
 
 h1 {
-  font-size: 9.2rem;
+  font-size: 6.9rem;
   font-weight: 700;
 }
 
 h2 {
-  font-size: 7.2rem;
+  font-size: 5.4rem;
 }
 
 h3 {
-  font-size: 5.6rem;
+  font-size: 4.2rem;
 }
 
 h4 {
-  font-size: 4.4rem;
+  font-size: 3.3rem;
 }
 
 h5 {
-  font-size: 3.6rem;
+  font-size: 2.7rem;
 }
 
 h6 {
-  font-size: 3.2rem;
+  font-size: 2.4rem;
 }
 
 body {
