@@ -79,5 +79,6 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
                   document.getElementById("tier").textContent = "Tier " + piece.tier;
                   document.getElementById("year").textContent = piece.year ? "(" + piece.year + ")" : "";
                   document.getElementById("result").style.visibility = "visible";
+                  document.getElementById("trigger").blur();
                 });
              });
