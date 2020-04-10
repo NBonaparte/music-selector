@@ -80,6 +80,7 @@ label {
 .button, button, input[type="button"], input[type="reset"], input[type="submit"] {
   background-color: #9C8D6C;
   border-color: #9C8D6C;
+  font-family: "'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
 }
 
 .button:focus, .button:hover,
