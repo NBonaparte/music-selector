@@ -74,7 +74,7 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
                   let i = randomInteger(0, filtered.length - 1);
                   let piece = filtered[i];
                   document.getElementById("composer").textContent = piece.composer;
-                  document.getElementById("title").textContent = piece.str;
+                  document.getElementById("title").textContent = smartquotes(piece.str);
                   document.getElementById("yt").href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(piece.composer + " " + piece.str);
                   document.getElementById("tier").textContent = "Tier " + piece.tier;
                   document.getElementById("year").textContent = piece.year ? "(" + piece.year + ")" : "";
