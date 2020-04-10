@@ -8,12 +8,13 @@ a {
 }
 
 label {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .noUi-pips {
   color: unset;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 }
 
 .noUi-marker {
@@ -32,7 +33,7 @@ label {
   background-color: #9C8D6C44;
   border: none;
   box-shadow: none;
-  margin-bottom: 10rem;
+  margin-bottom: 6rem;
 }
 
 .noUi-horizontal .noUi-handle {
@@ -94,14 +95,15 @@ h5 {
   font-size: 3.6rem;
 }
 
-body, h6 {
+h6 {
   font-size: 3.2rem;
 }
 
 body {
   font-family: "Bodoni 11";
   font-weight: 400;
-  padding-top: 1em;
+  font-size: 2.4rem;
+  padding-top: 1rem;
   background-color: #fbfaf9;
   color: #272423;
 }
