@@ -3,6 +3,48 @@ main {
   margin: 0 auto;
 }
 
+a {
+  color: #9C8D6C;
+}
+
+.button, button, input[type="button"], input[type="reset"], input[type="submit"] {
+  background-color: #9C8D6C;
+  border-color: #9C8D6C;
+}
+
+h1 {
+  font-size: 9.2rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 7.2rem;
+}
+
+h3 {
+  font-size: 5.6rem;
+}
+
+h4 {
+  font-size: 4.4rem;
+}
+
+h5 {
+  font-size: 3.6rem;
+}
+
+body, h6 {
+  font-size: 3.2rem;
+}
+
+body {
+  font-family: "Bodoni 11";
+  font-weight: 400;
+  padding-top: 1em;
+  background-color: #fbfaf9;
+  color: #272423;
+}
+
 #result, #rng {
   visibility: hidden;
 }
