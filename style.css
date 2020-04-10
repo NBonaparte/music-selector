@@ -7,10 +7,71 @@ a {
   color: #9C8D6C;
 }
 
+label {
+  font-size: 2.8rem;
+}
+
+.noUi-pips {
+  color: unset;
+  font-size: 2.2rem;
+}
+
+.noUi-marker {
+  background-color: #272423;
+}
+
+.noUi-handle::after, .noUi-handle::before {
+  all: unset;
+}
+
+.noUi-horizontal {
+  height: 6px;
+}
+
+.noUi-target {
+  background-color: #9C8D6C44;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 10rem;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 28px;
+  height: 28px;
+  right: -14px;
+  /*top: calc(-6px - (18px - 4px)/2 + (28px - 16px)/2);*/
+  top: calc(-6px - (18px - 6px)/2);
+}
+
+.noUi-handle {
+  box-shadow: none;
+  background-color: #9C8D6C;
+  border-radius: 14px;
+  border: none;
+}
+
+.noUi-connect {
+  background-color: #9C8D6C;
+}
+
 .button, button, input[type="button"], input[type="reset"], input[type="submit"] {
   background-color: #9C8D6C;
   border-color: #9C8D6C;
 }
+
+.button:focus, .button:hover,
+button:focus,
+button:hover,
+input[type='button']:focus,
+input[type='button']:hover,
+input[type='reset']:focus,
+input[type='reset']:hover,
+input[type='submit']:focus,
+input[type='submit']:hover {
+  background-color: #272423;
+  border-color: #272423;
+}
+
 
 h1 {
   font-size: 9.2rem;
