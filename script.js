@@ -57,7 +57,7 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
 									let filtered = works.filter(i => {
 										let [begin, end] = dates.noUiSlider.get();
 										let [lowest, highest] = tiers.noUiSlider.get();
-										return !((begin != 1000 || end != 2020 && (i.year < begin) || (i.year > end)) || (i.tier + 1 < lowest) || (i.tier + 1 > highest));
+										return !((begin != 1000 || end != 2020) && ((i.year < begin) || (i.year > end)) || (i.tier + 1 < lowest) || (i.tier + 1 > highest));
 									});
 									let piece = filtered[randInt(0, filtered.length - 1)];
 									if (piece) {
