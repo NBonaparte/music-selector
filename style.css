@@ -155,6 +155,8 @@ body {
 
 #result {
   padding-bottom: 2em;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 #tier {
