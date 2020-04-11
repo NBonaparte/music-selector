@@ -1,88 +1,88 @@
-var works = [];
-var dates = document.getElementById("date-range");
-noUiSlider.create(dates, {
-  start: [1000, 2020],
-  connect: true,
-  step: 20,
-  range: {min: 1000, max: 2020},
-  pips: {mode: "values", values: [...Array(11).keys()].map(x => (x + 10) * 100), density: 2},
-});
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-var tier_pips = [...Array(11).keys()].map(x => (x + 1) * 10);
-tier_pips.unshift(1);
-tier_pips.push(108);
-var tiers = document.getElementById("tier-range");
-noUiSlider.create(tiers, {
-  start: [1, 108],
-  connect: true,
-  step: 1,
-  range: {min: 1, max: 108},
-  pips: {mode: "values", values: tier_pips, density: 100/108},
-});
+function createSlider(id, start, step, values, density) {
+  var e = document.getElementById(id);
+  noUiSlider.create(e,{start,connect:true,step,range:{min:start[0],max:start[1]},pips:{mode:"values",values,density}});
+  return e;
+}
+
+function dispElem(id, disp) {
+  document.getElementById(id).style.display = disp ? "block" : "none";
+}
+
+function setText(id, text) {
+  document.getElementById(id).textContent = text;
+}
+
+var works = [];
+var dates = createSlider("date-range", [1000, 2020], 20, [...Array(11).keys()].map(x => (x + 10) * 100), 20/1020 * 100);
+var tiers = createSlider("tier-range", [1, 108], 1, [1, ...[...Array(11).keys()].map(x => (x + 1) * 10), 108], 100/108);
 
 fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAAj4LRM0-Eak_MYO1HssZW2FX1U")
   .then(r => r.text())
   .then(a => {
-                let i = -1;
+                let tier = -1;
                 let lines = a.split(/\r?\n/);
                 let main_part = false;
-                for (const line of lines) {
-                  if (line.startsWith("The First Tier"))
+                let j;
+                let tmp_comp = null;
+                for (j = 0; j < lines.length; j++) {
+                  let line = lines[j];
+                  if (line.startsWith("The First"))
                     main_part = true;
-                  else if (line.startsWith("The Absolute Bottom"))
+                  else if (line.startsWith("The Absolute"))
                     break;
                   if (main_part) {
                     if (line.startsWith("The")) {
-                      i++;
-                    } else {
-                      split = line.split(' ');
-                      if (split.length && split[0] == '*') {
-                        let tier = i;
-                        let year_str = line.slice(line.lastIndexOf('['));
+                      tier++;
+                    } else if (line) {
+                      let comp = line.slice(2, line.indexOf(":"));
+                      // handle case of indents (see first tier)
+                      if (lines[j+1][0] === " " && !tmp_comp) {
+                        tmp_comp = comp;
+                      } else {
+                        if (line[0] === " ") {
+                          comp = tmp_comp;
+                          line = line.trim();
+                        } else {
+                          tmp_comp = null;
+                        }
+                        let year_str = line.slice(line.lastIndexOf("["));
                         let year = year_str.match(/\d{4}/);
                         if (!year && year_str.includes("cent"))
                           year = year_str.match(/\d{2}/) * 100;
-                        let title = year ? line.slice(line.indexOf(':') + 2, line.lastIndexOf('[') - 1) : line.slice(line.indexOf(':') + 2);
-                        let comp = line.slice(2, line.indexOf(':'));
-                        works.push({str: title,
-                                       year: year,
-                                       composer: comp,
-                                       tier: i,
-                                      });
+                        let title = line.slice(line.indexOf(":") + 2, year ? (line.lastIndexOf("[") - 1) : undefined);
+                        works.push({title, year, comp, tier});
                       }
                     }
                   }
                 }
-                document.getElementById("rng").style.display = "block";
-                document.getElementById("info").style.display = "none";
-                function randomInteger(min, max) {
-                  return Math.floor(Math.random() * (max - min + 1)) + min;
-                }
-
-               document.getElementById("rng")
-                .addEventListener("submit", function(event) {
-                  event.preventDefault();
-                  let filtered = works.filter(i => {
-                    let begin = dates.noUiSlider.get()[0];
-                    let end = dates.noUiSlider.get()[1];
-                    let lowest = tiers.noUiSlider.get()[0];
-                    let highest = tiers.noUiSlider.get()[1];
-                    return !((begin != 1000 || end != 2020 && (i.year < begin) || (i.year > end)) || (i.tier + 1 < lowest) || (i.tier + 1 > highest));
-                  });
-                  let piece = filtered[randomInteger(0, filtered.length - 1)];
-                  if (piece) {
-                    document.getElementById("info").style.display = "none";
-                    document.getElementById("composer").textContent = piece.composer;
-                    document.getElementById("title").textContent = smartquotes(piece.str);
-                    document.getElementById("yt").href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(piece.composer + " " + piece.str);
-                    document.getElementById("tier").textContent = "Tier " + piece.tier;
-                    document.getElementById("year").textContent = piece.year ? "(" + piece.year + ")" : "";
-                    document.getElementById("result").style.display = "block";
-                  } else {
-                    document.getElementById("result").style.display = "none";
-                    document.getElementById("info").textContent = "No results found.";
-                    document.getElementById("info").style.display = "block";
-                  }
-                  document.getElementById("trigger").blur();
-                });
-             });
+                dispElem("rng", true);
+                dispElem("info", false);
+                document.getElementById("rng")
+                 .addEventListener("submit", function(event) {
+                   event.preventDefault();
+                   let filtered = works.filter(i => {
+                     let [begin, end] = dates.noUiSlider.get();
+                     let [lowest, highest] = tiers.noUiSlider.get();
+                     return !((begin != 1000 || end != 2020 && (i.year < begin) || (i.year > end)) || (i.tier + 1 < lowest) || (i.tier + 1 > highest));
+                   });
+                   let piece = filtered[randomInteger(0, filtered.length - 1)];
+                   if (piece) {
+                     dispElem("info", false);
+                     setText("composer", piece.comp);
+                     setText("title", smartquotes(piece.title));
+                     document.getElementById("yt").href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(piece.composer + " " + piece.title);
+                     setText("tier", "Tier " + piece.tier);
+                     setText("year", piece.year ? "(" + piece.year + ")" : "");
+                     dispElem("result", true);
+                   } else {
+                     dispElem("result", false);
+                     setText("info", "No results found.");
+                     dispElem("info", true);
+                   }
+                   document.getElementById("trigger").blur();
+                 });
+              });
