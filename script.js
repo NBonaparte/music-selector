@@ -64,7 +64,7 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
 										dispElem("info", false);
 										setText("composer", piece.comp);
 										setText("title", smartquotes(piece.title));
-										document.getElementById("yt").href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(piece.composer + " " + piece.title);
+										document.getElementById("yt").href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(piece.comp + " " + piece.title);
 										setText("tier", "Tier " + piece.tier);
 										setText("year", piece.year ? "(" + piece.year + ")" : "");
 										dispElem("result", true);
