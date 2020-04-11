@@ -156,3 +156,7 @@ body {
 #result {
   padding-bottom: 2em;
 }
+
+#tier {
+  opacity: 50%;
+}
