@@ -18,6 +18,7 @@ var filterWorks = (date_range, tier_range) => {
 	});
 	document.getElementById("count").textContent = filtered.length;
 };
+var searchBtn = document.getElementById("trigger");
 
 fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAAj4LRM0-Eak_MYO1HssZW2FX1U")
 	.then(r => r.text())
@@ -63,6 +64,8 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
 								dispElem("info", false);
 								dates.noUiSlider.on("set", new_dates => filterWorks(new_dates, tiers.noUiSlider.get()));
 								tiers.noUiSlider.on("set", new_tiers => filterWorks(dates.noUiSlider.get(), new_tiers));
+								searchBtn.addEventListener("mouseleave", e => e.target.blur());
+								document.addEventListener("touchstart", e => {if (e.target != searchBtn) searchBtn.blur()});
 								document.getElementById("rng").addEventListener("submit", function(event) {
 									event.preventDefault();
 									let piece = filtered[randInt(0, filtered.length - 1)];
@@ -79,6 +82,5 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
 										setText("info", "No results found.");
 										dispElem("info", true);
 									}
-									document.getElementById("trigger").blur();
 								});
 							});
