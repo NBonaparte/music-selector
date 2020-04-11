@@ -13,7 +13,7 @@
 
 
 a {
-  color: #9C8D6C;
+  color: #A9855B;
 }
 
 @media (max-width: 80.0rem) {
@@ -29,7 +29,7 @@ a {
 }
 
 hr {
-  background-color: #272423;
+  background-color: #333333;
   border: none;
   height: 2px;
 }
@@ -59,7 +59,7 @@ label {
 }
 
 .noUi-marker {
-  background-color: #272423;
+  background-color: #333333;
 }
 
 .noUi-handle::after, .noUi-handle::before {
@@ -71,7 +71,7 @@ label {
 }
 
 .noUi-target {
-  background-color: #9C8D6C44;
+  background-color: #A9855B44;
   border: none;
   box-shadow: none;
   margin-bottom: 6rem;
@@ -86,18 +86,18 @@ label {
 
 .noUi-handle {
   box-shadow: none;
-  background-color: #9C8D6C;
+  background-color: #A9855B;
   border-radius: 14px;
   border: none;
 }
 
 .noUi-connect {
-  background-color: #9C8D6C99;
+  background-color: #A9855B99;
 }
 
 .button, button, input[type="button"], input[type="reset"], input[type="submit"] {
-  background-color: #9C8D6C;
-  border-color: #9C8D6C;
+  background-color: #A9855B;
+  border-color: #A9855B;
   font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
@@ -110,8 +110,8 @@ input[type='reset']:focus,
 input[type='reset']:hover,
 input[type='submit']:focus,
 input[type='submit']:hover {
-  background-color: #272423;
-  border-color: #272423;
+  background-color: #333333;
+  border-color: #333333;
 }
 
 
@@ -149,8 +149,8 @@ body {
   font-weight: 400;
   font-size: 2.4rem;
   padding-top: 1rem;
-  background-color: #fbfaf9;
-  color: #272423;
+  background-color: #f8f8f8;
+  color: #333333;
 }
 
 #result, #rng {
