@@ -53,8 +53,8 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
                     }
                   }
                 }
-                document.getElementById("rng").style.visibility = "visible";
-                document.getElementById("load").style.display = "none";
+                document.getElementById("rng").style.display = "block";
+                document.getElementById("info").style.display = "none";
                 function randomInteger(min, max) {
                   return Math.floor(Math.random() * (max - min + 1)) + min;
                 }
@@ -67,18 +67,22 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
                     let end = dates.noUiSlider.get()[1];
                     let lowest = tiers.noUiSlider.get()[0];
                     let highest = tiers.noUiSlider.get()[1];
-                    if ((begin && i.year < begin) || (end && i.year > end) || (lowest && i.tier + 1 < lowest) || (highest && i.tier + 1 > highest))
-                      return false;
-                    return true;
+                    return !((i.year < begin) || (i.year > end) || (i.tier + 1 < lowest) || (i.tier + 1 > highest));
                   });
-                  let i = randomInteger(0, filtered.length - 1);
-                  let piece = filtered[i];
-                  document.getElementById("composer").textContent = piece.composer;
-                  document.getElementById("title").textContent = smartquotes(piece.str);
-                  document.getElementById("yt").href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(piece.composer + " " + piece.str);
-                  document.getElementById("tier").textContent = "Tier " + piece.tier;
-                  document.getElementById("year").textContent = piece.year ? "(" + piece.year + ")" : "";
-                  document.getElementById("result").style.visibility = "visible";
+                  let piece = filtered[randomInteger(0, filtered.length - 1)];
+                  if (piece) {
+                    document.getElementById("info").style.display = "none";
+                    document.getElementById("composer").textContent = piece.composer;
+                    document.getElementById("title").textContent = smartquotes(piece.str);
+                    document.getElementById("yt").href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(piece.composer + " " + piece.str);
+                    document.getElementById("tier").textContent = "Tier " + piece.tier;
+                    document.getElementById("year").textContent = piece.year ? "(" + piece.year + ")" : "";
+                    document.getElementById("result").style.display = "block";
+                  } else {
+                    document.getElementById("result").style.display = "none";
+                    document.getElementById("info").textContent = "No results found.";
+                    document.getElementById("info").style.display = "block";
+                  }
                   document.getElementById("trigger").blur();
                 });
              });
