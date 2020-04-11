@@ -151,6 +151,7 @@ body {
   padding-top: 1rem;
   background-color: #f8f8f8;
   color: #333333;
+  letter-spacing: unset;
 }
 
 #result, #rng {
