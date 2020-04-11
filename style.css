@@ -159,6 +159,6 @@ body {
   hyphens: auto;
 }
 
-#tier {
-  opacity: 50%;
+h6.float-right {
+  padding-top: calc((3.8rem - 2.4rem)/2);
 }
