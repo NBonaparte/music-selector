@@ -154,7 +154,7 @@ body {
 }
 
 #result {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
   overflow-wrap: break-word;
   hyphens: auto;
 }
