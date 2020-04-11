@@ -67,7 +67,7 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
                     let end = dates.noUiSlider.get()[1];
                     let lowest = tiers.noUiSlider.get()[0];
                     let highest = tiers.noUiSlider.get()[1];
-                    return !((i.year < begin) || (i.year > end) || (i.tier + 1 < lowest) || (i.tier + 1 > highest));
+                    return !((begin != 1000 || end != 2020 && (i.year < begin) || (i.year > end)) || (i.tier + 1 < lowest) || (i.tier + 1 > highest));
                   });
                   let piece = filtered[randomInteger(0, filtered.length - 1)];
                   if (piece) {
