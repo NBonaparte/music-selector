@@ -41,7 +41,7 @@ label {
 
 @media (max-width: 80.0rem) {
   .noUi-pips {
-    font-size: 1.2rem;
+    font-size: 1.0rem;
   }
   .noUi-value-horizontal {
     transform: translate(-50%, 100%);
@@ -165,4 +165,11 @@ body {
 
 h6.float-right {
   padding-top: calc((3.8rem - 2.4rem)/2);
+}
+
+@media(max-width: 80.0rem) {
+  h6.float-right {
+    padding-top: calc((3.8rem - 1.6rem)/2);
+    font-size: 1.6rem;
+  }
 }
