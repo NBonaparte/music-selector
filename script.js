@@ -82,5 +82,6 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
 										setText("info", "No results found.");
 										dispElem("info", true);
 									}
+									window.scrollTo({left: 0, top: document.body.scrollHeight, behavior: "smooth"});
 								});
 							});
