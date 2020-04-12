@@ -167,13 +167,16 @@ body {
 }
 
 #result, #rng {
-  display: none;
+  height: 0;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 #result {
   padding-bottom: 1em;
   overflow-wrap: break-word;
   hyphens: auto;
+  overflow: hidden;
 }
 
 h6.float-right {

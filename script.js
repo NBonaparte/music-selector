@@ -4,7 +4,10 @@ var createSlider = (id, start, step, values, density) => {
 	noUiSlider.create(e,{start,connect:true,step,range:{min:start[0],max:start[1]},pips:{mode:"values",values,density}});
 	return e;
 }
-var dispElem = (id, disp) => document.getElementById(id).style.display = disp ? "block" : "none";
+var dispElem = (id, disp) => {
+	document.getElementById(id).style.opacity = disp ? 1 : 0;
+	document.getElementById(id).style.height = !disp && id == "info" ? 0 : "auto";
+};
 var setText = (id, text) => document.getElementById(id).textContent = text;
 var works = [];
 var filtered = [];
@@ -68,20 +71,23 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
 								document.addEventListener("touchstart", e => {if (e.target != searchBtn) searchBtn.blur()});
 								document.getElementById("rng").addEventListener("submit", function(event) {
 									event.preventDefault();
+									dispElem("result", false);
 									let piece = filtered[randInt(0, filtered.length - 1)];
 									if (piece) {
-										dispElem("info", false);
-										setText("composer", piece.comp);
-										setText("title", smartquotes(piece.title));
-										document.getElementById("yt").href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(piece.comp + " " + piece.title);
-										setText("tier", piece.tier);
-										setText("year", piece.year ? "(" + piece.year + ")" : "");
-										dispElem("result", true);
+										setTimeout(() => {
+											dispElem("info", false);
+											setText("composer", piece.comp);
+											setText("title", smartquotes(piece.title));
+											document.getElementById("yt").href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(piece.comp + " " + piece.title);
+											setText("tier", piece.tier);
+											setText("year", piece.year ? "(" + piece.year + ")" : "");
+											dispElem("result", true);
+											window.scrollTo({left: 0, top: document.body.scrollHeight, behavior: "smooth"});
+										}, 300);
 									} else {
-										dispElem("result", false);
+										document.getElementById("result").style.height = 0;
 										setText("info", "No results found.");
 										dispElem("info", true);
 									}
-									window.scrollTo({left: 0, top: document.body.scrollHeight, behavior: "smooth"});
 								});
 							});
