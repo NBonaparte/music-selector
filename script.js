@@ -85,9 +85,11 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
 											window.scrollTo({left: 0, top: document.body.scrollHeight, behavior: "smooth"});
 										}, 300);
 									} else {
-										document.getElementById("result").style.height = 0;
 										setText("info", "No results found.");
-										dispElem("info", true);
+										setTimeout(() => {
+											dispElem("info", true);
+											document.getElementById("result").style.height = 0;
+										}, 300);
 									}
 								});
 							});
