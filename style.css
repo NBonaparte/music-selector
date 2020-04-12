@@ -1,6 +1,6 @@
 @media (max-width: 80.0rem) {
   main {
-    margin: 0 1em;
+    margin: 0 1.5em;
   }
 }
 
@@ -166,6 +166,30 @@ body {
   letter-spacing: unset;
 }
 
+@media(max-width: 80.0rem) {
+  h1 {
+    font-size: 4.6rem;
+  }
+  h2 {
+    font-size: 3.6rem;
+  }
+  h3 {
+    font-size: 2.8rem;
+  }
+  h4 {
+    font-size: 2.2rem;
+  }
+  h5 {
+    font-size: 1.8rem;
+  }
+  h6, body, label {
+    font-size: 1.6rem;
+  }
+  hr {
+    margin: 2.0rem 0;
+  }
+}
+
 #result, #rng {
   height: 0;
   opacity: 0;
@@ -185,7 +209,7 @@ h6.float-right {
 
 @media(max-width: 80.0rem) {
   h6.float-right {
-    padding-top: calc((3.8rem - 1.6rem)/2);
-    font-size: 1.6rem;
+    padding-top: calc((3.8rem - 1.5rem*1.4)/2);
+    font-size: 1.5rem;
   }
 }
