@@ -31,7 +31,7 @@ a {
 hr {
   background-color: #333333;
   border: none;
-  height: 2px;
+  height: 0.1rem;
 }
 
 label {
@@ -42,6 +42,7 @@ label {
 @media (max-width: 80.0rem) {
   .noUi-pips {
     font-size: 1.0rem;
+    font-family: "Bodoni 6";
   }
   .noUi-value-horizontal {
     transform: translate(-50%, 100%);
@@ -51,6 +52,7 @@ label {
 @media (min-width: 80.0rem) {
   .noUi-pips {
     font-size: 1.5rem;
+    font-family: "Bodoni 6";
   }
 }
 
@@ -98,20 +100,27 @@ label {
 .button, button, input[type="button"], input[type="reset"], input[type="submit"] {
   background-color: #A9855B;
   border-color: #A9855B;
-  font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: "Inter";
+  font-weight: 500;
+  border-radius: unset;
 }
 
-.button:focus, .button:hover,
-button:focus,
-button:hover,
-input[type='button']:focus,
-input[type='button']:hover,
-input[type='reset']:focus,
-input[type='reset']:hover,
-input[type='submit']:focus,
-input[type='submit']:hover {
-  background-color: #333333;
+.button.button-outline, button.button-outline, input[type="button"].button-outline, input[type="reset"].button-outline, input[type="submit"].button-outline {
+  color: #A9855B;
+}
+
+.button.button-outline:focus,
+.button.button-outline:hover,
+button.button-outline:focus,
+button.button-outline:hover,
+input[type='button'].button-outline:focus,
+input[type='button'].button-outline:hover,
+input[type='reset'].button-outline:focus,
+input[type='reset'].button-outline:hover,
+input[type='submit'].button-outline:focus,
+input[type='submit'].button-outline:hover {
   border-color: #333333;
+  color: #333333;
 }
 
 
