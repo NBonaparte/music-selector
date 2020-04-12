@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <title>Music Selector</title>
-  <link rel="apple-touch-icon" sizes="57x57" href="static/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="static/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="static/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="static/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="static/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="static/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="static/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="static/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="static/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="static/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="static/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
-  <link rel="manifest" href="static/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="static/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="https://indestructibletype.com/fonts/Bodoni/Bodoni.css" type="text/css" charset="utf-8" />
-  <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/milligram">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill"></script>
-  <script src="https://cdn.jsdelivr.net/npm/nouislider"></script>
-  <script src="https://cdn.jsdelivr.net/npm/smartquotes"></script>
-  <link rel="stylesheet" href="./style.css">
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<title>Music Selector</title>
+	<link rel="apple-touch-icon" sizes="57x57" href="static/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="static/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="static/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="static/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="static/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="static/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="static/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="static/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="static/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="static/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="static/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+	<link rel="manifest" href="static/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="static/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="https://indestructibletype.com/fonts/Bodoni/Bodoni.css" type="text/css" charset="utf-8" />
+	<link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/milligram">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill"></script>
+	<script src="https://cdn.jsdelivr.net/npm/nouislider"></script>
+	<script src="https://cdn.jsdelivr.net/npm/smartquotes"></script>
+	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main>
@@ -38,21 +38,21 @@
 <hr>
 
 <form id="rng">
-  <fieldset>
-  <label for="date-range">Dates</label>
-  <div id="date-range"></div>
-  <label for="tier-range">Tiers</label>
-  <div id="tier-range"></div>
-  <input class="button-outline" type="submit" value="Select" id="trigger">
-  <h6 class="float-right"><strong># Works:</strong> <span id="count"></h6>
-  </fieldset>
+	<fieldset>
+	<label for="date-range">Dates</label>
+	<div id="date-range"></div>
+	<label for="tier-range">Tiers</label>
+	<div id="tier-range"></div>
+	<input class="button-outline" type="submit" value="Select" id="trigger">
+	<h6 class="float-right"><strong># Works:</strong> <span id="count"></h6>
+	</fieldset>
 </form>
 <div id="info">Loading...</div>
 <div id="result">
 
-  <h3><strong id=composer></strong>: <em id="title"></em> <span id="year"></span></h3>
-  <h6 class="float-right">Tier <span id="tier"></span></h6>
-  <a class="button button-outline" href="" id="yt" target="_blank" rel="noopener noreferrer">Search on YouTube</a>
+	<h3><strong id=composer></strong>: <em id="title"></em> <span id="year"></span></h3>
+	<h6 class="float-right">Tier <span id="tier"></span></h6>
+	<a class="button button-outline" href="" id="yt" target="_blank" rel="noopener noreferrer">Search on YouTube</a>
 </div>
 </main>
 <script  src="./script.js"></script>
