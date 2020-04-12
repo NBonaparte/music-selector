@@ -60,8 +60,10 @@ label {
   color: unset;
 }
 
-.noUi-marker {
+.noUi-marker-horizontal.noUi-marker {
   background-color: #333333;
+  margin-left: -0.05rem;
+  width: 0.1rem;
 }
 
 .noUi-handle::after, .noUi-handle::before {
@@ -88,13 +90,14 @@ label {
 
 .noUi-handle {
   box-shadow: none;
-  background-color: #A9855B;
+  background-color: #F8F8F8;
   border-radius: 14px;
-  border: none;
+  border-color: #A9855B;
+  border-width: 0.1rem;
 }
 
 .noUi-connect {
-  background-color: #A9855B88;
+  background-color: #A9855B;
 }
 
 .button, button, input[type="button"], input[type="reset"], input[type="submit"] {
