@@ -11,16 +11,6 @@ var dispElem = (id, disp) => {
 var setText = (id, text) => document.getElementById(id).textContent = text;
 var works = [];
 var filtered = [];
-var dates = createSlider("date-range", [1000, 2020], 20, [...Array(11).keys()].map(x => (x + 10) * 100), 20/1020 * 100);
-var tiers = null;
-var filterWorks = (date_range, tier_range) => {
-	filtered = works.filter(i => {
-		let [begin, end] = date_range;
-		let [lowest, highest] = tier_range;
-		return !((begin != 1000 || end != 2020) && ((i.year < begin) || (i.year > end)) || (i.tier + 1 < lowest) || (i.tier + 1 > highest));
-	});
-	document.getElementById("count").textContent = filtered.length;
-};
 var searchBtn = document.getElementById("trigger");
 
 fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAAj4LRM0-Eak_MYO1HssZW2FX1U")
@@ -30,6 +20,7 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
 		let lines = a.split(/\r?\n/);
 		let main_part = false;
 		let j;
+		let min_year = 2020;
 		let tmp_comp = null;
 		for (j = 0; j < lines.length; j++) {
 			let line = lines[j];
@@ -56,13 +47,26 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
 						let year = year_str.match(/\d{4}/);
 						if (!year && year_str.includes("cent"))
 							year = year_str.match(/\d{2}/) * 100;
+						if (year && min_year > year)
+							min_year = year;
 						let title = line.slice(line.indexOf(":") + 2, year ? (line.lastIndexOf("[") - 1) : undefined);
 						works.push({title, year, comp, tier});
 					}
 				}
 			}
 		}
-		tiers = createSlider("tier-range", [1, tier + 1], 1, [1, ...[...Array(11).keys()].map(x => (x + 1) * 10), tier + 1], 100/(tier + 1));
+		min_year = Math.floor(min_year/100)*100;
+		cur_year = new Date().getFullYear();
+		let dates = createSlider("date-range", [min_year, cur_year], 20, [...Array(11).keys()].map(x => (x + min_year/100) * 100), 2000/(cur_year - min_year));
+		let tiers = createSlider("tier-range", [1, tier + 1], 1, [1, ...[...Array(11).keys()].map(x => (x + 1) * 10), tier + 1], 100/(tier + 1));
+		let filterWorks = (date_range, tier_range) => {
+			filtered = works.filter(i => {
+				let [begin, end] = date_range;
+				let [lowest, highest] = tier_range;
+				return !((begin != min_year || end != cur_year) && ((i.year < begin) || (i.year > end)) || (i.tier + 1 < lowest) || (i.tier + 1 > highest));
+			});
+			document.getElementById("count").textContent = filtered.length;
+		};
 		filterWorks(dates.noUiSlider.get(), tiers.noUiSlider.get());
 		dispElem("rng", true);
 		dispElem("info", false);
