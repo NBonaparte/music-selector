@@ -12,7 +12,7 @@ var setText = (id, text) => document.getElementById(id).textContent = text;
 var works = [];
 var filtered = [];
 var dates = createSlider("date-range", [1000, 2020], 20, [...Array(11).keys()].map(x => (x + 10) * 100), 20/1020 * 100);
-var tiers = createSlider("tier-range", [1, 108], 1, [1, ...[...Array(11).keys()].map(x => (x + 1) * 10), 108], 100/108);
+var tiers = null;
 var filterWorks = (date_range, tier_range) => {
 	filtered = works.filter(i => {
 		let [begin, end] = date_range;
@@ -62,6 +62,7 @@ fetch("https://docs.google.com/document/export?format=txt&id=18t_9MHZTENbmYdezAA
 				}
 			}
 		}
+		tiers = createSlider("tier-range", [1, tier + 1], 1, [1, ...[...Array(11).keys()].map(x => (x + 1) * 10), tier + 1], 100/(tier + 1));
 		filterWorks(dates.noUiSlider.get(), tiers.noUiSlider.get());
 		dispElem("rng", true);
 		dispElem("info", false);
